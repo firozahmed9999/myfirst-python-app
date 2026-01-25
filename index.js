@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3000;
 
 app.get("/", (req, res) => {
-  res.send("🚀 Node App running via Docker & GitHub Actions!");
+  res.send("🚀 Node App running via Docker & GitHub Actions!-- my first node project");
 });
 
 app.listen(PORT, () => {
