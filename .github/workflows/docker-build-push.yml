@@ -23,21 +23,14 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/node-docker-app:latest .
 
-      # 🔐 Trivy Installation
-      - name: Install Trivy
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y wget
-          wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.50.1_Linux-64bit.deb
-          sudo dpkg -i trivy_0.50.1_Linux-64bit.deb
-
-      # 🔍 Trivy Image Scan (does NOT break pipeline)
+      # ✅ SAFE Trivy Scan (will NOT fail pipeline)
       - name: Scan Docker image with Trivy
-        run: |
-          trivy image \
-            --severity HIGH,CRITICAL \
-            --exit-code 0 \
-            ${{ secrets.DOCKER_USERNAME }}/node-docker-app:latest
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          image-ref: ${{ secrets.DOCKER_USERNAME }}/node-docker-app:latest
+          severity: HIGH,CRITICAL
+          exit-code: 0
+          ignore-unfixed: true
 
       - name: Push Docker image
         run: |
