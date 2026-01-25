@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 #copy all project files into container
-COPY ..
+COPY . .
 
 #expose kr do port 3000
 Expose 3000
