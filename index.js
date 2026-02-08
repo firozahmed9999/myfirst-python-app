@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
     <!DOCTYPE html>
     <html>
       <head>
-        <title>Enrollment Form</title>
+        <title>Admission Form</title>
         <style>
           body {
             font-family: Arial, sans-serif;
