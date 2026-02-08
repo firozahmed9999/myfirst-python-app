@@ -6,7 +6,7 @@ const PORT = 3000;
 // Middleware to read form data
 app.use(express.urlencoded({ extended: true }));
 
-// Home page – Enrollment Form
+// Home page – admission Form
 app.get("/", (req, res) => {
   res.send(`
     <!DOCTYPE html>
@@ -53,7 +53,7 @@ app.get("/", (req, res) => {
       </head>
       <body>
         <div class="container">
-          <h2>Enrollment Form</h2>
+          <h2>Admission Form</h2>
 
           <form method="POST" action="/enroll">
             <input type="text" name="name" placeholder="Customer Name" required />
@@ -74,7 +74,7 @@ app.post("/enroll", (req, res) => {
     <!DOCTYPE html>
     <html>
       <head>
-        <title>Enrollment Completed</title>
+        <title>admission Completed</title>
         <style>
           body {
             font-family: Arial, sans-serif;
@@ -98,7 +98,7 @@ app.post("/enroll", (req, res) => {
       </head>
       <body>
         <div class="container">
-          <p class="success">✅ Enrollment completed</p>
+          <p class="success">✅ admission completed</p>
           <p>Name: ${name}</p>
           <p>Mobile: ${mobile}</p>
           <a href="/">Go Back</a>
